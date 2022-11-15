@@ -1,0 +1,86 @@
+	<nav class="navbar navbar-expand-lg bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Control de registro</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="/">Home</a>
+					</li>
+					<li class="nav-item dropdown"  sec:authorize="isAuthenticated()">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Estudiantes
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="/estudiantes/nuevo">Registro Estudiantes</a></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="/">Lista estudiantes</a></li>
+						</ul>
+					</li>
+					
+					<li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Grados
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="/grados/nuevo">Registro grados</a></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="/grados">Lista grados</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown"  sec:authorize="isAuthenticated()">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Cursos
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="/cursos/nuevo">Registro de cursos</a></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="/cursos">Lista cursos</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown"  sec:authorize="isAuthenticated()">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Asignación
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="/grados_cursos/nuevo">Registro de asignación</a></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="/grados_cursos">Lista de asignación</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown"  sec:authorize="isAuthenticated()">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							[[${#httpServletRequest.remoteUser}]]
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+							<a class="dropdown-item" href="/login">Login</a>
+							<form class="d-flex" th:action="@{/logout}" method="post">
+							   <input class="btn btn-secondary" type="submit" value="Cerrar sesión"/>
+							</form>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+

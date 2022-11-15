@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Registro de estudiante</title>
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+		crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+	<div th:insert="/navbar"></div>
+
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content card">
+				<h1 class="text-center">Registro de estudiante</h1>
+				<div class="card-body">
+					<form th:action="@{/estudiantes}" th:object="${estudiante}" method="POST">
+
+						<div class="form-group mt-3">
+							<labe>Nombre :</labe>
+							<input type="text" name="nombre" th:field="*{nombre}" class="form-control"
+								placeholder="escriba su nombre" />
+							<div th:if="${#fields.hasErrors('nombre')}" class="alert alert-danger"
+								th:errors="*{nombre}"> </div>
+						</div>
+
+						<div class="form-group mt-3">
+							<labe>Apellido :</labe>
+							<input type="text" name="apellido" th:field="*{apellido}" class="form-control"
+								placeholder="escriba su apellido" />
+							<div th:if="${#fields.hasErrors('apellido')}" class="alert alert-danger"
+								th:errors="*{apellido}"> </div>
+						</div>
+
+						<div class="form-group mt-3">
+							<labe>Email :</labe>
+							<input type="email" name="email" th:field="*{email}" class="form-control"
+								placeholder="ejemplo@gmail.com" />
+							<div th:if="${#fields.hasErrors('email')}" class="alert alert-danger" th:errors="*{email}">
+							</div>
+						</div>
+
+						<div class="form-group mt-3">
+							<label th:text="Grados"></label>
+							
+								<select th:field="*{grado}" name="grado" class="form-control" >
+								    <option value="">Seleccionar Grado</option>
+									<option th:each="grado :${grados}" th:value="${grado.id}">[[${grado.nombreg}]]&nbsp;Sección:[[${grado.seccion}]]
+									</option>
+								</select>
+							    <div th:if="${#fields.hasErrors('grado')}" class="alert alert-danger" th:errors="*{grado}">
+							</div>
+						</div>
+
+						<div class="box-footer mt-3">
+							<button class="btn btn-success"> Guardar</button>
+						</div>
+
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+	<meta charset="UTF-8" />
+	<title>Control de estudiantes</title>
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+	<div th:insert="/navbar"></div>
+	<section class="vh-100" style="background-color: #508bfc;">
+		<div class="container py-5 h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+					<div class="card shadow-2-strong" style="border-radius: 1rem;">
+						<div class="card-body p-5 text-center">
+
+							<h3 class="mb-5">Inicio de sesión</h3>
+							<div th:if="${param.error}">
+								<div class="alert alert-danger alert-dismissible fade show" role="alert">
+									Username o password inválidos
+									<button type="button" class="btn-close" data-bs-dismiss="alert"
+										aria-label="Close"></button>
+								</div>
+							</div>
+
+							<div th:if="${param.logout}">
+								<div class="alert alert-primary alert-dismissible fade show" role="alert">
+									Ha cerrado sesión exitosamente
+									<button type="button" class="btn-close" data-bs-dismiss="alert"
+										aria-label="Close"></button>
+								</div>
+							</div>
+							<form th:action="@{/login}" method="post">
+								<div class="form-outline mb-4">
+									<input type="text" id="username" name="username"
+										class="form-control form-control-lg" /> <label class="form-label"
+										for="typeEmailX-2">Nombre de
+										usuario</label>
+								</div>
+
+								<div class="form-outline mb-4">
+									<input type="password" id="password" name="password"
+										class="form-control form-control-lg" /> <label class="form-label"
+										for="typePasswordX-2">Password</label>
+								</div>
+
+								<button class="btn btn-primary btn-lg btn-block" type="submit">Iniciar
+									sesión</button>
+
+							</form>
+
+							<hr class="my-4">
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer th:fragment="footer" class="container">
+		<script src="https://code.jquery.com/jquery-3.6.0.js"
+			integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+			integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+			crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+			integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+			crossorigin="anonymous"></script>
+
+	</footer>
+</body>
+
+</html>
